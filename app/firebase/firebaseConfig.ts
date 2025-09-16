@@ -13,7 +13,18 @@ const firebaseConfig = {
 };
 
 const isLocal = import.meta.env.VITE_ENV === "local";
-const app = isLocal ? initializeApp(firebaseConfig) : initializeApp(); // attempt to use auto config in production
+let app;
+if (isLocal) {
+  app = initializeApp(firebaseConfig);
+} else {
+  fetch('/__/firebase/init.json')
+  .then(res => res.json())
+  .then(config => {
+    // Use config to initialize Firebase
+    app = initializeApp(config);
+  });
+}
+
 const fbAuth = getAuth(app);
 export const fbStore = getFirestore(app);
 export const fbFileStore = getStorage(app);
