@@ -8,16 +8,14 @@ export class UserDoc {
     city: string | null;
     country: string | null;
   };
-  documents: {
-    identityDocument: {
-      docType: IdentityDocType | "";
-      url: File | string | null;
-      selfieVerified: boolean;
-    };
-    addressProof: {
-      docType: AddressProofDocTypes | "";
-      url: File | string | null;
-    };
+  identityDocument: {
+    docType: IdentityDocType | "";
+    url: File | string | null;
+    selfieVerified: boolean;
+  };
+  addressProof: {
+    docType: AddressProofDocTypes | "";
+    url: File | string | null;
   };
   verified: boolean;
 
@@ -25,10 +23,8 @@ export class UserDoc {
     this.firstName = data.firstName ?? null;
     this.lastName = data.lastName ?? null;
     this.address = data.address ?? { street: null, city: null, country: null };
-    this.documents = data.documents ?? {
-      identityDocument: { docType: "", url: null, selfieVerified: false },
-      addressProof: { docType: "", url: null },
-    };
+    this.identityDocument = data.identityDocument ?? { docType: "", url: null, selfieVerified: false };
+    this.addressProof = data.addressProof ?? { docType: "", url: null };
     this.verified = data.verified ?? false;
   }
 
@@ -37,7 +33,8 @@ export class UserDoc {
       firstName: this.firstName,
       lastName: this.lastName,
       address: this.address,
-      documents: this.documents,
+      identityDocument: this.identityDocument,
+      addressProof: this.addressProof,
       verified: this.verified,
     };
   }
@@ -50,9 +47,14 @@ export const userConverter = {
       firstName: doc.firstName ?? null,
       lastName: doc.lastName ?? null,
       address: doc.address ?? { street: null, city: null, country: null },
-      documents: doc.documents ?? {
-        identityDocument: { docType: "", url: null, selfieVerified: false },
-        addressProof: { docType: "", url: null },
+      identityDocument: doc.identityDocument ?? {
+        docType: "",
+        url: null,
+        selfieVerified: false,
+      },
+      addressProof: doc.addressProof ?? {
+        docType: "",
+        url: null,
       },
       verified: doc.verified ?? false,
     });
@@ -62,7 +64,8 @@ export const userConverter = {
       firstName: user.firstName,
       lastName: user.lastName,
       address: user.address,
-      documents: user.documents,
+      identityDocument: user.identityDocument,
+      addressProof: user.addressProof,
       verified: user.verified,
     };
   },

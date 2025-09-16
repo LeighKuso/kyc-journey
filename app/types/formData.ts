@@ -1,3 +1,5 @@
+export type uploadingDocument = "identityDocument" | "addressProof";
+
 export type IdentityDocType =
   | "South Africa ID"
   | "Driving Licence"
