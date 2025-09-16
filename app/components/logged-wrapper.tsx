@@ -7,11 +7,11 @@ import fbAuth, { fbStore } from "~/firebase/firebaseConfig";
 
 export async function clientLoader() {
   // mock slow response from firebase
-  await new Promise((resolve) =>
-    setTimeout(() => {
-      resolve(undefined);
-    }, 2000)
-  );
+  // await new Promise((resolve) =>
+  //   setTimeout(() => {
+  //     resolve(undefined);
+  //   }, 2000)
+  // );
   const isLogged = await isAuth();
   if (!isLogged) {
     throw redirect("/");
