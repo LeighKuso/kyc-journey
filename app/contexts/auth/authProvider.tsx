@@ -6,9 +6,7 @@ import AuthUser from "~/types/authUser";
 import {
   doc,
   getDoc,
-  onSnapshot,
   setDoc,
-  Unsubscribe,
 } from "firebase/firestore";
 import { userConverter, UserDoc } from "~/types/userDoc";
 

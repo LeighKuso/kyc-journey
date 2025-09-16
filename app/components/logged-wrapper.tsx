@@ -33,15 +33,13 @@ export default function LoggedWrapper({ children }: { children: ReactNode }) {
 
   return (
     <AuthProvider>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-        <div className="text-2xl font-bold mb-4">Logged Wrapper</div>
-        {/* Progrss bar */}
-        <Outlet />
-        <div className="mt-4">
+      <div className="flex flex-col gap-2">
+        <div className=" self-end">
           <Logout />
         </div>
+        {/* Progress bar */}
+        <Outlet />
       </div>
-      {children}
     </AuthProvider>
   );
 }

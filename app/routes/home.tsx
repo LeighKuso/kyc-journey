@@ -21,8 +21,9 @@ export async function clientLoader() {
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold mb-4 text-center">Welcome, please login or signup</h1>
+    <div className="flex flex-col items-center justify-center min-h-60">
+      <h1 className="text-3xl font-bold mb-4 text-center">Welcome to User KYC Demo</h1>
+      <p className='text-center text-sm text-gray-500 max-w-xs'>This is a demo app to showcase a KYC journey using React Router and Firebase Authentication.</p>
       <div className="mt-4 w-full max-w-md">
         <Login />
       </div>

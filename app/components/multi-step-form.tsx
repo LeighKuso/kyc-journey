@@ -52,11 +52,9 @@ const MultiStepForm: React.FC = () => {
 
   const steps = [
     "Personal Details",
-    "Proof of Identity",
-    "Upload Identity Document",
-    "Address Details",
-    "Proof of Address",
-    "Upload Address Document",
+    "Upload Identity Proof Document",
+    "Identity Check - Live Selfie",
+    "Address Details and Document Proof",
   ];
 
   // Determine completed steps
@@ -71,7 +69,7 @@ const MultiStepForm: React.FC = () => {
 
   return (
     <>
-      <div className="flex justify-between mb-6">
+      <div className="flex justify-between mb-6 max-w-sm">
         {steps.map((label, idx) => (
           <div key={label} className="flex flex-col items-center">
             <div
@@ -113,6 +111,33 @@ const MultiStepForm: React.FC = () => {
               className="input mb-2 w-full"
               required
             />
+            <input
+              name="street"
+              type="text"
+              placeholder="Street"
+              value={formData.street}
+              onChange={handleChange}
+              className="input mb-2 w-full"
+              required
+            />
+            <input
+              name="city"
+              type="text"
+              placeholder="City"
+              value={formData.city}
+              onChange={handleChange}
+              className="input mb-2 w-full"
+              required
+            />
+            <input
+              name="country"
+              type="text"
+              placeholder="Country"
+              value={formData.country}
+              onChange={handleChange}
+              className="input mb-2 w-full"
+              required
+            />
             <button type="button" onClick={nextStep} className="btn">
               Next
             </button>
@@ -134,16 +159,6 @@ const MultiStepForm: React.FC = () => {
                 </option>
               ))}
             </select>
-            <button type="button" onClick={prevStep} className="btn mr-2">
-              Back
-            </button>
-            <button type="button" onClick={nextStep} className="btn">
-              Next
-            </button>
-          </div>
-        )}
-        {step === 2 && (
-          <div>
             <h2 className="text-xl font-bold mb-2">Upload Identity Document</h2>
             <input
               type="file"
@@ -161,36 +176,10 @@ const MultiStepForm: React.FC = () => {
             </button>
           </div>
         )}
-        {step === 3 && (
+        {step === 2 && (
           <div>
-            <h2 className="text-xl font-bold mb-2">Address Details</h2>
-            <input
-              type="text"
-              name="street"
-              placeholder="Street"
-              value={formData.street}
-              onChange={handleChange}
-              className="input mb-2 w-full"
-              required
-            />
-            <input
-              type="text"
-              name="city"
-              placeholder="City"
-              value={formData.city}
-              onChange={handleChange}
-              className="input mb-2 w-full"
-              required
-            />
-            <input
-              type="text"
-              name="country"
-              placeholder="Country"
-              value={formData.country}
-              onChange={handleChange}
-              className="input mb-2 w-full"
-              required
-            />
+            <h2 className="text-xl font-bold mb-2">Identity Verification</h2>
+            {/* Placeholder for live selfie capture */}
             <button type="button" onClick={prevStep} className="btn mr-2">
               Back
             </button>
@@ -199,7 +188,7 @@ const MultiStepForm: React.FC = () => {
             </button>
           </div>
         )}
-        {step === 4 && (
+        {step === 3 && (
           <div>
             <h2 className="text-xl font-bold mb-2">Proof of Address</h2>
             <select
@@ -208,24 +197,14 @@ const MultiStepForm: React.FC = () => {
               onChange={handleChange}
               className="input mb-2 w-full"
               required>
-              <option value="">Select Address Proof Type</option>
+              <option value="">Select Proof of Address Type</option>
               {addressProofTypes.map((type) => (
                 <option key={type} value={type}>
                   {type}
                 </option>
               ))}
             </select>
-            <button type="button" onClick={prevStep} className="btn mr-2">
-              Back
-            </button>
-            <button type="button" onClick={nextStep} className="btn">
-              Next
-            </button>
-          </div>
-        )}
-        {step === 5 && (
-          <div>
-            <h2 className="text-xl font-bold mb-2">Upload Address Document</h2>
+            <h2 className="text-xl font-bold mb-2">Upload Proof of Address.</h2>
             <input
               type="file"
               name="addressFile"
@@ -237,9 +216,9 @@ const MultiStepForm: React.FC = () => {
             <button type="button" onClick={prevStep} className="btn mr-2">
               Back
             </button>
-            <button type="submit" className="btn">
-              Submit
-            </button>
+            {/* <button type="button" onClick={nextStep} className="btn">
+              Next
+            </button> */}
           </div>
         )}
       </form>

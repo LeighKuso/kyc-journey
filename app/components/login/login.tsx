@@ -37,8 +37,9 @@ export function Login() {
 
   return (
     <div className="flex flex-col items-center">
+      <h2 className="font-bold mb-4">Please Login to Continue</h2>
       <button
-        className={`mb-4 ${styles.loginButton}`}
+        className={`mb-2 ${styles.loginButton}`}
         onClick={handleGoogleLogin}>
         <img
           src={GoogleIcon}
@@ -47,7 +48,7 @@ export function Login() {
         />
         Continue with Google
       </button>
-
+        <p>or</p>
       <button
         className={`mb-2 ${styles.loginButton}`}
         onClick={handleAnonymousLogin}>
@@ -56,7 +57,7 @@ export function Login() {
           alt="anonymous icon"
           className="inline-block w-5 h-5 mr-2 align-middle"
         />
-        Login Anonymously
+        Continue Anonymously
       </button>
 
       <p className="text-center text-sm text-gray-500 mt-2 max-w-xs">
