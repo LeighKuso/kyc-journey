@@ -12,7 +12,8 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+const isLocal = import.meta.env.VITE_ENV === "local";
+const app = isLocal ? initializeApp(firebaseConfig) : initializeApp(); // attempt to use auto config in production
 const fbAuth = getAuth(app);
 export const fbStore = getFirestore(app);
 export const fbFileStore = getStorage(app);
