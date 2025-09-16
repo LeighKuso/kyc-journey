@@ -17,7 +17,7 @@ let app;
 if (isLocal) {
   app = initializeApp(firebaseConfig);
 } else {
-  app = initializeApp(import.meta.env.FIREBASE_WEBAPP_CONFIG);
+  app = initializeApp(JSON.parse(import.meta.env.FIREBASE_WEBAPP_CONFIG));
 }
 
 const fbAuth = getAuth(app);
