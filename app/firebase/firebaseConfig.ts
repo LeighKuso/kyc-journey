@@ -17,7 +17,16 @@ let app;
 if (isLocal) {
   app = initializeApp(firebaseConfig);
 } else {
-  app = initializeApp(JSON.parse(import.meta.env.FIREBASE_WEBAPP_CONFIG));
+  try {
+    const firebaseWebAppConfig = process.env.FIREBASE_WEBAPP_CONFIG;
+    if (!firebaseWebAppConfig) {
+      throw new Error("FIREBASE_WEBAPP_CONFIG is not defined in the environment variables.");
+    }
+    app = initializeApp(JSON.parse(firebaseWebAppConfig));
+  } catch (error) {
+    console.error("Error initializing Firebase:", error)
+    throw error;
+  }
 }
 
 const fbAuth = getAuth(app);
