@@ -17,12 +17,7 @@ let app;
 if (isLocal) {
   app = initializeApp(firebaseConfig);
 } else {
-  fetch('/__/firebase/init.json')
-  .then(res => res.json())
-  .then(config => {
-    // Use config to initialize Firebase
-    app = initializeApp(config);
-  });
+  app = initializeApp(import.meta.env.FIREBASE_WEBAPP_CONFIG);
 }
 
 const fbAuth = getAuth(app);
