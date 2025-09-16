@@ -18,7 +18,7 @@ if (isLocal) {
   app = initializeApp(firebaseConfig);
 } else {
   try {
-    const firebaseWebAppConfig = process.env.FIREBASE_WEBAPP_CONFIG;
+    const firebaseWebAppConfig = import.meta.env.VITE_FIREBASE_WEBAPP_CONFIG;
     if (!firebaseWebAppConfig) {
       throw new Error("FIREBASE_WEBAPP_CONFIG is not defined in the environment variables.");
     }
